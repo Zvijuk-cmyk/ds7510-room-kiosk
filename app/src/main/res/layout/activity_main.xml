@@ -38,7 +38,7 @@
                     android:orientation="vertical"
                     android:gravity="center_horizontal">
 
-                    <!-- Status Badge -->
+                <!-- Status Badge -->
                     <TextView
                         android:id="@+id/txtStatus"
                         android:layout_width="wrap_content"
@@ -57,6 +57,21 @@
                     <Space
                         android:layout_width="match_parent"
                         android:layout_height="24dp" />
+
+                    <!-- Room Name -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pixel Parkview"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"
+                        android:letterSpacing="0.05"/>
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp" />
 
                     <!-- Title -->
                     <TextView
