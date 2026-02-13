@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">RoomKiosk</string>
+    <string name="status_free">Book Room</string>
+    <string name="status_occupied">Occupied</string>
+    <string name="time_15m">15 min</string>
+    <string name="time_30m">30 min</string>
+    <string name="time_60m">60 min</string>
+    <string name="confirm_title">Confirm Booking</string>
+    <string name="confirm_message">Book the room for %d minutes?</string>
+    <string name="confirm_ok">Book</string>
+    <string name="confirm_cancel">Cancel</string>
+</resources>
