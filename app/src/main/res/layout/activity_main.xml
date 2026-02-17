@@ -5,166 +5,189 @@
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:background="@color/bg_free">
+    android:orientation="horizontal"
+    android:baselineAligned="false"
+    android:background="@color/background_dark">
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <!-- LEFT PANEL: Status & Actions -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutStatusContainer"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_weight="0.55"
+        android:padding="32dp"
+        android:background="@drawable/bg_status_available"> <!-- Programmatically changed -->
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- Room Name -->
+        <TextView
+            android:id="@+id/textRoomName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pixel Parkview"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.05"
+            android:textAllCaps="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:textColor="@color/white"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textRoomName" />
+
+        <!-- Sub-status / Countdown -->
+        <TextView
+            android:id="@+id/textStatusDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="for 45 min"
+            android:textColor="#E0E0E0"
+            android:textSize="24sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textStatus" />
+            
+        <!-- Current Time (Bottom Left or Top Right? Let's put it Top Right of this panel) -->
+        <TextClock
+            android:id="@+id/textClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="h:mm a"
+            android:format24Hour="H:mm"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- ACTIONS CONTAINER -->
+        <LinearLayout
+            android:id="@+id/layoutActions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
+            <!-- AVAILABLE ACTIONS: Quick Book -->
+            <LinearLayout
+                android:id="@+id/layoutActionsAvailable"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintWidth_max="500dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:cardBackgroundColor="@color/card_background"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="8dp"
-                app:contentPadding="32dp">
+                android:orientation="vertical">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quick Book"
+                    android:textColor="#E0E0E0"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
 
-                <!-- Status Badge -->
-                    <TextView
-                        android:id="@+id/txtStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_status_badge"
-                        android:letterSpacing="0.1"
-                        android:paddingHorizontal="16dp"
-                        android:paddingVertical="8dp"
-                        android:text="FREE"
-                        android:textAllCaps="true"
-                        android:textColor="@color/text_primary"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        tools:text="FREE" />
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="24dp" />
-
-                    <!-- Room Name -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Pixel Parkview"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:letterSpacing="0.05"/>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="8dp" />
-
-                    <!-- Title -->
-                    <TextView
-                        android:id="@+id/txtTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Book Room"
-                        android:textColor="@color/text_primary"
-                        android:textSize="28sp"
-                        android:textStyle="bold" />
-
-                    <!-- Timer -->
-                    <TextView
-                        android:id="@+id/txtTimer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:text=""
-                        android:textColor="@color/text_secondary"
-                        android:textSize="20sp"
-                        android:fontFamily="monospace"
-                        tools:text="Time left: 14:59" />
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="32dp" />
-
-                    <!-- Quick Action Buttons -->
-                    <LinearLayout
-                        android:id="@+id/rowButtons"
-                        android:layout_width="match_parent"
-                        android:layout_height="72dp"
-                        android:orientation="horizontal"
-                        android:gravity="center"
-                        android:weightSum="3">
-
-                        <Button
-                            android:id="@+id/btn15"
-                            style="@style/Widget.Material3.Button.TonalButton"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="6dp"
-                            android:text="15m"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="12dp" />
-
-                        <Button
-                            android:id="@+id/btn30"
-                            style="@style/Widget.Material3.Button.TonalButton"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:layout_marginHorizontal="6dp"
-                            android:text="30m"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="12dp" />
-
-                        <Button
-                            android:id="@+id/btn60"
-                            style="@style/Widget.Material3.Button.TonalButton"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:layout_marginStart="6dp"
-                            android:text="60m"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="12dp" />
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="24dp" />
-
-                    <!-- End Meeting Button -->
                     <Button
-                        android:id="@+id/btnEnd"
-                        style="@style/Widget.Material3.Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="72dp"
-                        android:backgroundTint="@color/text_status_busy"
-                        android:text="End meeting"
-                        android:textColor="@color/white"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:cornerRadius="16dp" />
+                        android:id="@+id/btnBook15"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="15m"
+                        android:layout_marginEnd="8dp"/>
 
+                    <Button
+                        android:id="@+id/btnBook30"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="30m"
+                        android:layout_marginEnd="8dp"/>
+
+                    <Button
+                        android:id="@+id/btnBook60"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="60m"/>
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+            </LinearLayout>
+
+            <!-- BUSY ACTIONS: End Meeting -->
+             <LinearLayout
+                android:id="@+id/layoutActionsBusy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/btnEndMeeting"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:textColor="#B71C1C"
+                    android:text="End Meeting"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- RIGHT PANEL: Agenda -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.45"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@color/surface_dark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPCOMING"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:letterSpacing="0.1"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Meeting List -->
+        <!-- Using ScrollView + Container for simplicity, or RecyclerView if we had adapter. 
+             Since we are doing a manual bind in MainActivity, we will use a LinearLayout inside ScrollView 
+             and inflate items dynamically. -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            
+            <LinearLayout
+                android:id="@+id/containerMeetings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- Items inflated here -->
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -1,8 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.RoomKiosk" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/bg_free</item>
+    <style name="Theme.RoomKiosk" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/status_available</item>
+        <item name="android:windowBackground">@color/background_dark</item>
+        <item name="android:statusBarColor">@color/background_dark</item>
     </style>
 
     <style name="Theme.RoomKiosk.Fullscreen" parent="Theme.RoomKiosk">

@@ -3,21 +3,26 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- Status Backgrounds (matches logic in MainActivity but defined here for reference/fallback) -->
-    <color name="bg_free">#113A1F</color> <!-- Deep Green from code -->
-    <color name="bg_busy">#3A1111</color> <!-- Deep Red from code -->
+    <!-- Dark Theme Backgrounds -->
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="surface_variant_dark">#2C2C2C</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#E1E1E1</color>
+    <color name="text_secondary">#A0A0A0</color>
+    <color name="text_tertiary">#606060</color>
+    
+    <!-- Accents -->
+    <color name="status_available">#4CAF50</color> <!-- Material Green 500 -->
+    <color name="status_busy">#F44336</color>     <!-- Material Red 500 -->
+    <color name="status_available_bg">#1B5E20</color> <!-- Dark Green -->
+    <color name="status_busy_bg">#B71C1C</color>     <!-- Dark Red -->
 
-    <!-- UI Elements -->
-    <color name="card_background">#FFFFFF</color>
-    <color name="text_primary">#1F2937</color> <!-- Dark Grey -->
-    <color name="text_secondary">#6B7280</color> <!-- Medium Grey -->
-    <color name="text_status_free">#059669</color> <!-- Emerald 600 -->
-    <color name="text_status_busy">#DC2626</color> <!-- Red 600 -->
-    
-    <color name="btn_tint_default">#E5E7EB</color> <!-- Grey 200 -->
-    <color name="btn_text_default">#374151</color> <!-- Grey 700 -->
-    <color name="btn_tint_action">#4F46E5</color> <!-- Indigo 600 -->
-    <color name="btn_text_action">#FFFFFF</color>
-    
-    <color name="divider">#E5E7EB</color>
+    <!-- Legacy / Compatibility -->
+    <color name="bg_free">@color/status_available_bg</color>
+    <color name="bg_busy">@color/status_busy_bg</color>
+    <color name="card_background">@color/surface_dark</color>
+    <color name="text_status_free">@color/status_available</color>
+    <color name="text_status_busy">@color/status_busy</color>
 </resources>
